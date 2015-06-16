@@ -1,16 +1,21 @@
 """`main` is the top level module for your Flask application."""
 
 # Import the Flask Framework
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, render_template
+from wechat_formatter.formatter import bp_wechat_formatter
+
+app = Flask(__name__, static_folder='common')
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
+# blueprints
+app.register_blueprint(bp_wechat_formatter)
+
 
 @app.route('/')
-def hello():
+def wechat_format():
     """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    return 'Hello World'
 
 
 @app.errorhandler(404)
