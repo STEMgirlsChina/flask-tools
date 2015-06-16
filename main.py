@@ -9,6 +9,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 app = Flask(__name__, static_folder='common')
+
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.
 
@@ -16,10 +17,13 @@ app = Flask(__name__, static_folder='common')
 app.register_blueprint(bp_wechat_formatter)
 
 
+
 @app.route('/')
 def wechat_format():
     """Return a friendly HTTP greeting."""
     return 'Hello World'
+
+
 
 
 @app.errorhandler(404)

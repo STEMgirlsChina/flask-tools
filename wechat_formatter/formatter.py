@@ -11,6 +11,7 @@ bp_wechat_formatter = Blueprint('bp_wechat_formatter', __name__, template_folder
 from wechat_formatter.formats import *
 from wechat_formatter.static import copyright_str
 
+
 format_dict = {
     1: SectionTitle(),
     2: AuthorFormat(),

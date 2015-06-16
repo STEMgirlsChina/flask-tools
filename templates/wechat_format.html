@@ -10,8 +10,8 @@
 
     <script src="common/js/bootstrap.min.js"></script>
 
-    <script src="http://danml.com/js/download.js"></script>
-    <script>download("hello world", "hello.txt", "text/plain")</script>
+    <script src="common/js/download.js"></script>
+
 
 </head>
 
@@ -21,10 +21,14 @@
   <div class="col-md-4"></div>
   <div class="col-md-4">
 
+        <br/>
+
         <label>Select format type</label>
         <select class="form-control" id="format-select">
 
         </select>
+
+        <br/>
 
 
         <button type="button" class="btn btn-primary" id="select-format-btn">Add format</button>
@@ -33,13 +37,17 @@
 
         </div>
 
+        <br/>
+
         <button type="button" class="btn btn-primary" id="preview-btn">Preview</button>
 
         <div class="preview">
 
         </div>
 
-      <button type="button" class="btn btn-primary" id="download-btn">Download</button>
+      <br/>
+
+      <button type="button" class="btn btn-primary" id="download-btn">Download HTML</button>
 
 
 
@@ -118,7 +126,10 @@
                 $(".preview").html(data);
                 rendered_string = data;
             },
-            dataType: "json"
+            dataType: "json",
+            error:function(){
+                alert("server error");
+            }
         });
 
     });

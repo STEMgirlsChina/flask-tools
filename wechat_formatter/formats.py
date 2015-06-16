@@ -30,6 +30,8 @@ class SectionTitle(BaseFormat):
 
         self.usep = False
 
+        self.useheader = False
+
 class AuthorFormat(BaseFormat):
     #wechat_guide/4.html
     def __init__(self):
@@ -42,6 +44,7 @@ class AuthorFormat(BaseFormat):
         self.html_post = '</span></p><br/>'
 
         self.usep = False
+        self.useheader = False
 
 class ParagraphFormat(BaseFormat):
     #wechat_guide/5.html
@@ -59,6 +62,7 @@ class ParagraphFormat(BaseFormat):
         self.p_pre = '<p style="line-height: normal; font-size: 16px; font-family: 微软雅黑; color: #555555; padding: 0px; margin: 10px 0px; text-align: left;">'
 
         self.p_post = '</p>'
+        self.useheader = False
 
 class CitationFormat(BaseFormat):
     #wechat_guide/6.html
@@ -75,6 +79,7 @@ class CitationFormat(BaseFormat):
 
         self.p_pre = "<p>"
         self.p_post = "</p>"
+        self.useheader = False
 
 class RelatedArticle(BaseFormat):
     #wechat_guide/7.html
@@ -92,6 +97,8 @@ class RelatedArticle(BaseFormat):
         self.p_pre = '<p style="line-height: normal; font-size: 16px; font-family: 微软雅黑; color: rgb(85, 85, 85); box-sizing: border-box; padding: 0px; margin: 10px 0px; text-align: left;">'
         self.p_post = '</p>'
 
+        self.useheader = False
+
 class ArticleSource(BaseFormat):
     #wechat_guide/8.html
     def __init__(self):
@@ -107,6 +114,8 @@ class ArticleSource(BaseFormat):
         self.p_pre = '<p style="line-height: normal; font-size: 12px; font-family: 微软雅黑; box-sizing: border-box; padding: 0px; margin: 0px 0px 5px; color: rgb(85, 85, 85);">'
         self.p_post = '</p>'
 
+        self.useheader = False
+
 class Reference(BaseFormat):
     #wechat_guide/8.html
     def __init__(self):
@@ -121,6 +130,8 @@ class Reference(BaseFormat):
 
         self.p_pre = '<p style="line-height: normal; font-size: 12px; font-family: 微软雅黑; box-sizing: border-box; padding: 0px; margin: 0px 0px 5px; color: rgb(85, 85, 85);">'
         self.p_post = '</p>'
+
+        self.useheader = False
 
 
 class Introduction(BaseFormat):
