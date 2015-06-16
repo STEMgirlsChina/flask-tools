@@ -18,7 +18,8 @@ format_dict = {
     4: CitationFormat(),
     5: RelatedArticle(),
     6: ArticleSource(),
-    7: Reference()
+    7: Reference(),
+    8: Introduction()
 }
 
 @bp_wechat_formatter.route('/wechat-formatter/guide/<name>', methods = ['GET'])
@@ -63,19 +64,36 @@ def render():
         value = text['value'].decode("utf-8").replace("\n", "")
         fformat = format_dict[format_id]
 
-        if fformat.usep:
+        if fformat.useheader:
             result_str += fformat.html_pre.decode('utf-8')
             tokens = value.split("</p>")
-            for token in tokens:
-                token = token.replace("<p>", "")
-                if len(token) > 0:
-                    result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
-                    result_str += "\n"
-            result_str += fformat.html_post.decode("utf-8")
+
+            if len(tokens) > 2:
+                header = tokens[0]
+                if len(header) > 0:
+                    result_str += fformat.header_pre.decode('utf-8') + header.decode('utf-8') + fformat.header_post.decode('utf-8')
+                    result_str += '\n'
+                for token in tokens[1:]:
+                    if len(token) > 0:
+                        result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
+                        result_str += "\n"
+            result_str += fformat.html_post.decode('utf-8')
 
         else:
-            value = value.replace("<p>", "").replace("</p>","")
-            result_str += fformat.html_pre.decode("utf-8") + value + fformat.html_post.decode("utf-8")
+
+            if fformat.usep:
+                result_str += fformat.html_pre.decode('utf-8')
+                tokens = value.split("</p>")
+                for token in tokens:
+                    token = token.replace("<p>", "")
+                    if len(token) > 0:
+                        result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
+                        result_str += "\n"
+                result_str += fformat.html_post.decode("utf-8")
+
+            else:
+                value = value.replace("<p>", "").replace("</p>","")
+                result_str += fformat.html_pre.decode("utf-8") + value + fformat.html_post.decode("utf-8")
 
         result_str += "\n\n" # more user-friendly
 

@@ -12,6 +12,7 @@ class BaseFormat(object):
         self.html_post = ""
         self.child_formats = []
         self.usep = False
+        self.useheader = False
 
 class SectionTitle(BaseFormat):
 
@@ -120,3 +121,24 @@ class Reference(BaseFormat):
 
         self.p_pre = '<p style="line-height: normal; font-size: 12px; font-family: 微软雅黑; box-sizing: border-box; padding: 0px; margin: 0px 0px 5px; color: rgb(85, 85, 85);">'
         self.p_post = '</p>'
+
+
+class Introduction(BaseFormat):
+    #wechat_guide/2.html
+    def __init__(self):
+        self.name = "introduction"
+        self.id = 8
+        self.description = "引言、作者简介、其他章节类标题"
+
+        self.usep = True
+
+        self.useheader = True
+
+        self.header_pre = '<strong>'
+        self.header_post = '</strong>'
+
+        self.p_pre = '<p style="color: #555555; font-size: 16px; font-weight: normal; line-height: normal; box-sizing: border-box; padding: 0px; margin: 0px;">'
+        self.p_post = '</p>'
+
+        self.html_pre = '<section data-id="1" style="border: 0px none; padding: 0px; box-sizing: border-box; margin: 0px; font-size: 16px; font-family: 微软雅黑;" class="135editor"><h1 class="135brush" placeholder="请输入标题" style="border-left-width: 5px; border-left-style: solid; border-left-color: rgb(0, 187, 170); font-size: 16px; line-height: 2em; color: #555555; padding: 5px 10px; margin: 10px 0px; box-sizing: border-box;">'
+        self.html_post = '</h1></section>'
