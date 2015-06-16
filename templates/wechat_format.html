@@ -4,13 +4,133 @@
   <meta charset="utf-8"/>
   <title>Marked in the browser</title>
   <script src="common/js/marked.min.js"></script>
+
+    <script src="common/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="common/css/bootstrap.min.css">
+
+    <script src="common/js/bootstrap.min.js"></script>
+
+    <script src="http://danml.com/js/download.js"></script>
+    <script>download("hello world", "hello.txt", "text/plain")</script>
+
 </head>
 
 <body>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+
+        <label>Select format type</label>
+        <select class="form-control" id="format-select">
+
+        </select>
+
+
+        <button type="button" class="btn btn-primary" id="select-format-btn">Add format</button>
+
+        <div class="input_fields_wrap">
+
+        </div>
+
+        <button type="button" class="btn btn-primary" id="preview-btn">Preview</button>
+
+        <div class="preview">
+
+        </div>
+
+      <button type="button" class="btn btn-primary" id="download-btn">Download</button>
+
+
+
+  </div>
+  <div class="col-md-4"></div>
+
+
+</div>
+
+
   <div id="content"></div>
   <script>
-    document.getElementById('content').innerHTML =
-      marked('# Marked in browser\n\nRendered by **marked**.');
+      var format_dict = null;
+      var rendered_string = null;
+
+    // get formats
+    $.post( "/wechat-formatter/get-formats", function( data ) {
+
+        console.log(data);
+
+        format_dict = data;
+
+        console.log(format_dict);
+
+        for( var i=0, l=data.length; i<l; i++ ) {
+            var item = data[i];
+            var format_id = item.id
+            var format_name = item.name
+            var format_description = item.description
+            var item_html = "<option value='" + format_id.toString() + "' name='" + name + "'>" + format_description + "</option>";
+            $("#format-select").append(item_html);
+        }
+
+        });
+
+
+    // generate new textarea
+
+    var wrapper = $(".input_fields_wrap");
+    $( "#select-format-btn" ).click(function() {
+
+        var selected_format_id_str = $("#format-select").val();
+        console.log("selected format: " + selected_format_id_str);
+
+        // create text area
+        $(wrapper).append('<div><textarea class="content" rows="10" cols="80" type="text" format_id_str="' + selected_format_id_str + '"/><a href="#" class="remove_field">Remove</a></div>');
+    });
+
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove();
+    });
+
+
+    // render preview
+    $("#preview-btn").click(function(){
+
+        // convert markdown text to html
+        var texts = $(".content").map(function(){
+            //var this_val = marked($(this).val()).replace("\n", "").replace(new RegExp("^<p>"), "").replace(new RegExp("</p>$"), "") // remove <p> prefix & postfix
+            var this_val = marked($(this).val()).replace("\n", "");
+            return {"value": this_val , "format_id_str": $(this).attr("format_id_str")};
+        }).get();
+
+        console.log('clicked preview');
+        console.log(texts);
+
+        // call REST
+        $(".preview").empty();
+
+        $.ajax({
+            type: "POST",
+            url:"/wechat-formatter/render",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({input:texts}),
+            success:function(data){
+                $(".preview").html(data);
+                rendered_string = data;
+            },
+            dataType: "json"
+        });
+
+    });
+
+    // download source
+    $("#download-btn").click(function(){
+        download(rendered_string, "content.html", "text/html");
+    });
+
+
+
+
   </script>
 </body>
 </html>

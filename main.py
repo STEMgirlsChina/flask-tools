@@ -4,6 +4,10 @@
 from flask import Flask, render_template
 from wechat_formatter.formatter import bp_wechat_formatter
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 app = Flask(__name__, static_folder='common')
 # Note: We don't need to call run() since our application is embedded within
 # the App Engine WSGI application server.

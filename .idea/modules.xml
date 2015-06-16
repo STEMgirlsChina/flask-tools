@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/wechat-format.iml" filepath="$PROJECT_DIR$/.idea/wechat-format.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/stem-tools-gae.iml" filepath="$PROJECT_DIR$/.idea/stem-tools-gae.iml" />
     </modules>
   </component>
 </project>
