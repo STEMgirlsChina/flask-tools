@@ -99,7 +99,7 @@ def render():
                 value = value.replace("<p>", "").replace("</p>","")
                 result_str += fformat.html_pre.decode("utf-8") + value + fformat.html_post.decode("utf-8")
 
-        result_str += "<br/>\n\n" # more user-friendly
+        result_str += "\n\n" # more user-friendly
 
     result_str += copyright_str
 
