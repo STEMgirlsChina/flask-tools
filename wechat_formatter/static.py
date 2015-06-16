@@ -3,15 +3,7 @@
 __author__ = 'jsun'
 
 
-copyright_str = """<section style="margin: 0px 0px; padding: 5px 20px 15px 20px; outline: 0px; border: 1px #555555; background-color:#f1f1f1;background-position: 1% 5px; background-repeat: no-repeat; font-family: 微软雅黑;">
-    <h1 style="white-space: normal; margin-top: 10px; margin-bottom: 10px; font-size: 16px; line-height: 1.75em; color: rgb(0, 187, 170); box-sizing: border-box; padding: 0px;">
-        <strong style="box-sizing: border-box; padding: 0px; margin: 0px;">版权声明</strong>
-    </h1>
-    <p style="margin-bottom: 5px; line-height: normal; white-space: normal; font-size: 16px; color: rgb(85, 85, 85); box-sizing: border-box; padding: 0px 0px 0px 10px;">
-        本文为本站成员原创，版权及其他合法权利均归作者与本站共同所有。任何媒体或网站未经本站授权不得转贴或以其他方式复制发表本文。寻求授权请联系： <span style="color:#00bbaa;">contact@stemgirlschina.com</span>
-    </p>
-</section>
-<p style="margin-top: 5px; margin-bottom: 5px; font-family: sans-serif; font-size: 16px; line-height: normal; white-space: normal; box-sizing: border-box; padding: 0px;">
+copyright_str = """<p style="margin-top: 5px; margin-bottom: 5px; font-family: sans-serif; font-size: 16px; line-height: normal; white-space: normal; box-sizing: border-box; padding: 0px;">
     <br/>
 </p>
 <section data-id="3" style="border: 0px none; padding: 0px; box-sizing: border-box; margin: 0px; font-size: 14px; font-family: 微软雅黑;" class="135editor">

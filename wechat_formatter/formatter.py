@@ -2,6 +2,7 @@ __author__ = 'jsun'
 # coding: utf-8
 
 from flask import Blueprint, render_template, Response, request
+from utils.basic_auth import requires_auth
 import json
 
 bp_wechat_formatter = Blueprint('bp_wechat_formatter', __name__, template_folder = 'templates')
@@ -20,7 +21,8 @@ format_dict = {
     5: RelatedArticle(),
     6: ArticleSource(),
     7: Reference(),
-    8: Introduction()
+    8: Introduction(),
+    9: Copyright()
 }
 
 @bp_wechat_formatter.route('/wechat-formatter/guide/<name>', methods = ['GET'])
@@ -31,6 +33,7 @@ def wechat_guides(name):
 
 
 @bp_wechat_formatter.route('/wechat-formatter', methods = ['GET'])
+@requires_auth
 def format_wechat():
     return render_template('wechat_format.html')
 
