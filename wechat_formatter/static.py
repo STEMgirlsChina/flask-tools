@@ -3,10 +3,7 @@
 __author__ = 'jsun'
 
 
-copyright_str = """<p style="margin-top: 5px; margin-bottom: 5px; font-family: sans-serif; font-size: 16px; line-height: normal; white-space: normal; box-sizing: border-box; padding: 0px;">
-    <br/>
-</p>
-<section data-id="3" style="border: 0px none; padding: 0px; box-sizing: border-box; margin: 0px; font-size: 14px; font-family: 微软雅黑;" class="135editor">
+copyright_str = """<section data-id="3" style="border: 0px none; padding: 0px; box-sizing: border-box; margin: 0px; font-size: 14px; font-family: 微软雅黑;" class="135editor">
     <section style="max-width: 100%; margin: 2px; padding: 0px; box-sizing: border-box;">
         <section style="max-width: 100%; margin-left: 1em; line-height: 1.4em; box-sizing: border-box; padding: 0px;">
             <span style="font-size: 14px; box-sizing: border-box; padding: 0px; margin: 0px;"><strong style="color: rgb(85, 85, 85); line-height: 32px; white-space: pre-wrap; box-sizing: border-box; padding: 0px; margin: 0px;"><span class="135brush" data-brushtype="text" data-mce-style="color: #a5a5a5;" placeholder="关于135编辑器" style="border-radius: 5px; color: rgb(255, 255, 255); padding: 4px 10px; box-sizing: border-box; margin: 0px; background-color: rgb(0, 187, 170);">关于“理工女”</span></strong></span>
