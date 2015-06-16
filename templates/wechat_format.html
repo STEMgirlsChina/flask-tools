@@ -18,8 +18,8 @@
 <body>
 
 <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
 
         <br/>
 
@@ -52,7 +52,7 @@
 
 
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-3"></div>
 
 
 </div>
@@ -93,7 +93,7 @@
         console.log("selected format: " + selected_format_id_str);
 
         // create text area
-        $(wrapper).append('<div><textarea class="content" rows="10" cols="80" type="text" format_id_str="' + selected_format_id_str + '"/><a href="#" class="remove_field">Remove</a></div>');
+        $(wrapper).append('<div><textarea class="content" rows="10" cols="80" type="text" format_id_str="' + selected_format_id_str + '"/><br/><a href="#" class="remove_field">Remove</a></div>');
     });
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
