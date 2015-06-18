@@ -22,9 +22,9 @@ class SectionTitle(BaseFormat):
         self.id = 1
         self.description = "小标题"
 
-        self.html_pre = '<h2 style="line-height: normal; font-size: 16px; font-family: 微软雅黑; color: rgb(0, 187, 170); box-sizing: border-box; padding: 0px; margin: 10px 0px; text-align: left;"><strong>'
+        self.html_pre = '<p style="line-height: normal; font-size: 16px; font-family: 微软雅黑; color: rgb(0, 187, 170); box-sizing: border-box; padding: 0px; margin: 10px 0px; text-align: left;"><strong>'
 
-        self.html_post = '</strong></h2>'
+        self.html_post = '</strong></p>'
 
         self.child_formats = []
 
@@ -59,7 +59,7 @@ class ParagraphFormat(BaseFormat):
 
         self.usep = True
 
-        self.p_pre = '<p style="line-height: normal; font-size: 16px; font-family: 微软雅黑; color: #555555; padding: 0px; margin: 10px 0px; text-align: left;">'
+        self.p_pre = '<p style="line-height: 1.5em; font-size: 16px; font-family: 微软雅黑; color: #555555; padding: 0px; margin: 10px 0px; text-align: left;">'
 
         self.p_post = '</p>'
         self.useheader = False

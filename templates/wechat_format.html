@@ -136,10 +136,10 @@
 
     // download source
     $("#download-btn").click(function(){
-        download(rendered_string, "content.html", "text/html");
+        // add <html> and charset tags
+        var final_string = '<html><head><meta charset="UTF-8"></head><body>' + rendered_string + "</body></html>";
+        download(final_string, "content.html", "text/html");
     });
-
-
 
 
   </script>
