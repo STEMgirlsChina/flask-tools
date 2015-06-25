@@ -16,7 +16,8 @@ copyright_str = """<section data-id="3" style="border: 0px none; padding: 0px; b
                 <span placeholder="提供非常好用的微信文章编辑工具。" style="color: rgb(0, 187, 170); box-sizing: border-box; padding: 0px; margin: 0px;">扫描或长按下方二维码，关注“理工女”微信号。</span>
             </p>
             <p style="text-align: center; box-sizing: border-box; padding: 0px; margin: 0px;">
-                <img alt="" src="http://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzAwNTUwNzIzMg==" opacity="" title="stemgirls" style="box-sizing: border-box; padding: 0px; margin: 0px;" border="0" height="" vspace="0" width=""/>
+                <!--<img alt="" src="http://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzAwNTUwNzIzMg==" opacity="" title="stemgirls" style="box-sizing: border-box; padding: 0px; margin: 0px;" border="0" height="" vspace="0" width=""/>-->
+                <img alt="" src="common/qrcode/qrcode_258.jpg" opacity="" title="stemgirls" style="box-sizing: border-box; padding: 0px; margin: 0px;" border="0" height="" vspace="0" width=""/>
             </p>
         </section>
     </section>
