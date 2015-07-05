@@ -4,6 +4,7 @@ __author__ = 'jsun'
 from flask import Blueprint, render_template, Response, request
 from utils.basic_auth import requires_auth
 import json
+from bs4 import BeautifulSoup
 
 bp_wechat_formatter = Blueprint('bp_wechat_formatter', __name__, template_folder = 'templates')
 
@@ -79,8 +80,20 @@ def render():
                     result_str += '\n'
                 for token in tokens[1:]:
                     if len(token) > 0:
-                        result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
-                        result_str += "\n"
+                        if 'li' in token:
+                            soup = BeautifulSoup(token)
+                            strings = list(soup.strings)
+                            replace_dict = {e.decode('utf-8'): fformat.p_pre.decode('utf-8') + e.decode('utf-8') + fformat.p_post.decode('utf-8') for e in strings}
+
+                            new_token = token
+                            for k in replace_dict:
+                                new_token = new_token.replace(k, replace_dict[k])
+
+                            result_str += new_token + '\n'
+
+                        else:
+                            result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
+                            result_str += "\n"
             result_str += fformat.html_post.decode('utf-8')
 
         else:
@@ -91,8 +104,22 @@ def render():
                 for token in tokens:
                     token = token.replace("<p>", "")
                     if len(token) > 0:
-                        result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
-                        result_str += "\n"
+                        # NOTE: dirty hack, wrap p within li
+                        # TODO: test!
+                        if 'li' in token:
+                            soup = BeautifulSoup(token)
+                            strings = list(soup.strings)
+                            replace_dict = {e.decode('utf-8'): fformat.p_pre.decode('utf-8') + e.decode('utf-8') + fformat.p_post.decode('utf-8') for e in strings}
+
+                            new_token = token
+                            for k in replace_dict:
+                                new_token = new_token.replace(k, replace_dict[k])
+
+                            result_str += new_token + '\n'
+
+                        else:
+                            result_str += fformat.p_pre.decode("utf-8") + token.decode("utf-8") + fformat.p_post.decode("utf-8")
+                            result_str += "\n"
                 result_str += fformat.html_post.decode("utf-8")
 
             else:
